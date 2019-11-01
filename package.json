@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "debug": "node --inspect server.js",
     "dev": "node server.js",
     "build": "next build",
     "start": "NODE_ENV=production node server.js"
@@ -13,9 +14,11 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@koa/router": "^8.0.2",
     "@shopify/app-bridge-react": "^1.10.0",
     "@shopify/koa-shopify-auth": "^3.1.48",
     "@shopify/koa-shopify-graphql-proxy": "^3.2.1",
+    "@shopify/koa-shopify-webhooks": "^2.1.1",
     "@shopify/polaris": "^4.7.2",
     "@zeit/next-css": "^1.0.1",
     "apollo-boost": "^0.4.4",

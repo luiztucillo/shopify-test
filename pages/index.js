@@ -15,6 +15,23 @@ class Index extends React.Component {
     store.set("ids", idsFromResources);
   };
 
+  layout() {
+    return (
+      <Layout>
+        <EmptyState
+          heading="Select products to start"
+          action={{
+            content: "Select products",
+            onAction: () => this.setState({ open: true })
+          }}
+          image={img}
+        >
+          <p>Select products and change their price temporarily</p>
+        </EmptyState>
+      </Layout>
+    );
+  }
+
   render() {
     const emptyState = !store.get("ids");
     return (
@@ -34,22 +51,7 @@ class Index extends React.Component {
           onSelection={resources => this.handleSelection(resources)}
           onCancel={() => this.setState({ open: false })}
         />
-        {emptyState ? (
-          <Layout>
-            <EmptyState
-              heading="Select products to start"
-              action={{
-                content: "Select products",
-                onAction: () => this.setState({ open: true })
-              }}
-              image={img}
-            >
-              <p>Select products and change their price temporarily</p>
-            </EmptyState>
-          </Layout>
-        ) : (
-          <ResourceListWithProducts />
-        )}
+        {emptyState ? this.layout() : <ResourceListWithProducts />}
       </Page>
     );
   }
