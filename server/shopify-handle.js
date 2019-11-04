@@ -3,7 +3,7 @@ const {receiveWebhook, registerWebhook} = require('@shopify/koa-shopify-webhooks
 const {default: graphQLProxy} = require("@shopify/koa-shopify-graphql-proxy");
 const {ApiVersion} = require("@shopify/koa-shopify-graphql-proxy");
 const {verifyRequest} = require("@shopify/koa-shopify-auth");
-const checkout = require('./shopify-checkout');
+const shopifyRouting = require('./shopify-routing');
 const dotenv = require("dotenv");
 
 dotenv.config();
@@ -68,5 +68,5 @@ module.exports = (server, router) => {
     //validate requests following shopify security rules
     server.use(verifyRequest());
 
-    checkout(server, router);
+    shopifyRouting(server, router);
 };

@@ -14,15 +14,11 @@ const router = new Router();
 
 server.use(session(server));
 
-shopifyHandle(server, router);
-
 server
     .use(router.routes())
     .use(router.allowedMethods());
 
-router.get('/', (ctx, next) => {
-    ctx.body = 'Hello World';
-});
+shopifyHandle(server, router);
 
 server.use(async ctx => {
     ctx.respond = false;
@@ -32,5 +28,4 @@ server.use(async ctx => {
 server.listen(port, () => {
     console.log(`> Ready on http://localhost:${port}`);
 });
-//https://luiztucillo-shopify-sample.localtunnel.me/auth?shop=tucillo-stample-store.myshopify.com
-//https://tiny-ladybug-59.localtunnel.me/auth?shop=tucillo-stample-store.myshopify.com
+//https://shopify.luiztucillo.com.br/auth?shop=tucillo-stample-store.myshopify.com
